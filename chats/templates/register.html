@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Chat&Fresh</title>
+    <script type="text/javascript">
+        var bgcount = 6;
+
+        function changebg() {
+            var num = Math.ceil(Math.random() * bgcount);
+            document.body.background = '../templates/bgimages/' + num + '.jpg';
+        }
+    </script>
+    <style>
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .form-control {
+            box-shadow: none;
+            border-color: #ddd;
+        }
+        
+        .bg {
+            width: 700px;
+            margin: auto;
+            display: block;
+        }
+        
+        .form-control:focus {
+            border-color: #4aba70;
+        }
+        
+        .login-form {
+            width: 350px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+        
+        .login-form form {
+            color: #434343;
+            border-radius: 1px;
+            margin-bottom: 15px;
+            background: #fff;
+            border: 1px solid #f3f3f3;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .login-form h4 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .login-form .avatar {
+            color: #fff;
+            margin: 0 auto 30px;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            z-index: 9;
+            background: #4aba70;
+            padding: 15px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-form .avatar i {
+            font-size: 62px;
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .login-form .form-control,
+        .login-form .btn {
+            min-height: 40px;
+            border-radius: 2px;
+            transition: all 0.5s;
+        }
+        
+        .login-form .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        
+        .login-form .btn {
+            background: #4aba70;
+            border: none;
+            line-height: normal;
+        }
+        
+        .login-form .btn:hover,
+        .login-form .btn:focus {
+            background: #42ae68;
+        }
+        
+        .login-form .checkbox-inline {
+            float: left;
+        }
+        
+        .login-form input[type="checkbox"] {
+            margin-top: 2px;
+        }
+        
+        .login-form .forgot-link {
+            float: right;
+        }
+        
+        .login-form .small {
+            font-size: 13px;
+        }
+        
+        .login-form a {
+            color: #4aba70;
+        }
+    </style>
+</head>
+
+<body onload="changebg();">
+    <div class="login-form bg">
+        {% if message %}
+        <!-- <ul class="messages"> -->
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <h4 class="modal-title">Welcome to Registration Panel</h4>
+            <!-- </ul> -->
+            <div class="form-group">
+                <input type="text" name="firstname" class="form-control" placeholder="FirstName" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastname" class="form-control" placeholder="LastName" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="file" name="profile" class="form-control" placeholder="Profile" required="required">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="xyz@gmail.com" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" name="pwd1" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" name="pwd2" class="form-control" placeholder="Confirm Password" required="required">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Register">
+        </form>
+        <div class="text-center small">Already have an account? <a href="{% url 'login' %}">Sign in</a></div>
+    </div>
+</body>
+
+</html>
