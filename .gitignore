@@ -1,2 +1,2 @@
-chatFresh/settings.py
-chatFresh/__pycache__/
+/chatFresh/*
+/chatFresh/__pycache__/
