@@ -27,21 +27,17 @@
 <body>
     <div class="login-form container"> {% if message %}
 
-        <!-- <ul class="messages">-->
-        <div class="alert alert-info"> {{ message }}
 
-        </div> {% endif %}
-
-        <form action="" method="post"> {% csrf_token %}
+        <form action="{% url 'login' %}"> {% csrf_token %}
 
             <div class="avatar"><i class="material-icons">&#xE7FF;
         </i></div>
-            <h4 class="modal-title">Login to Your Account</h4>
-            <div class="form-group"><input type="text" name="username" class="form-control" placeholder="Username" required="required"></div>
-            <div class="form-group"><input type="password" name="password" class="form-control" placeholder="Password" required="required"></div>
-            <div class="form-group small clearfix"><a href="{% url 'forgot_pwd' %}" class="forgot-link">Forgot Password?</a></div><input type="submit" class="btn btn-primary btn-block btn-lg" value="Login"></form>
-        <div class="text-center small" style="background-color: white;">Don't have an account? <a href="{% url 'register' %}">Sign up</a></div>
-    </div>
+            <h4 class="modal-title">{{ message }}</h4>
+            <!-- <div class="form-group"><input type="text" name="username" class="form-control" placeholder="Username" required="required"></div>
+            <div class="form-group"><input type="password" name="password" class="form-control" placeholder="Password" required="required"></div> -->
+            <!-- <div class="form-group small clearfix"><a href="{% url 'forgot_pwd' %}" class="forgot-link">Forgot Password?</a></div> -->
+            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Proceed to Login"></form>
+    </div>{% endif %}
 </body>
 
 </html>

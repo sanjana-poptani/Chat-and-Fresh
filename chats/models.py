@@ -12,7 +12,7 @@ class groupModel(models.Model):
 
 class Profile(models.Model):
     username = models.CharField(max_length=100,unique=True)
-    userprofile = models.CharField(max_length=100,default='')
+    userprofile = models.ImageField(upload_to='image/',default='')
     firstname = models.CharField(max_length=100,default='')
     lastname = models.CharField(max_length=100,default='xyz')
     is_active = models.BooleanField(auto_created=True,default=False)
@@ -29,3 +29,11 @@ class Profile(models.Model):
 class UserGroups(models.Model):
     userRef = models.ForeignKey(Profile,on_delete=CASCADE)
     group = models.ForeignKey(groupModel,on_delete=CASCADE)
+
+class ForgotPwd(models.Model):
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    forget_pwd_token = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self
