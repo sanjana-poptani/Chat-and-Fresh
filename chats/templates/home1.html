@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Chat&Fresh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="" href="{% static 'css/emojionearea.min.css' %}">
+    <link rel="" type="" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'bgimages/favicon.ico' %}" type="image/x-icon">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script type="text/javascript">
+        function changeImg(imgNumber) {
+            // var myImages = ["{% static '/bgimages/3.jpg' %}", "{% static '/bgimages/1.jpg' %}", "{% static '/bgimages/2.jpg' %}", "{% static '/bgimages/4.jpg' %}", "{% static '/bgimages/5.jpg' %}", "{% static '/bgimages/6.jpg' %}", "{% static '/bgimages/7.jpg' %}"];
+            // var imgShown = document.body.style.backgroundImage;
+            // var newImgNumber = Math.floor(Math.random() * myImages.length);
+            document.body.style.backgroundImage = 'url(https://source.unsplash.com/1600x800/?nature,land,sky,forest,flower)';
+        }
+        window.onload = changeImg;
+    </script>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container app">
+        <div class="row app-one">
+            <div class="col-sm-4 side">
+                <div class="side-one">
+                    <div class="row heading">
+                        <div class="col-sm-3 col-xs-3 heading-avatar" style="width: 15%;">
+                            <div class="heading-avatar-icon" style="width: 10%;">
+                                <img src="{{curruser.userprofile.url}}">
+                            </div>
+                        </div>
+                        <span class="nameMeta"><b>{{curruser.firstname}} {{curruser.lastname}}
+                        </b> </span>
+                        <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
+                            <!-- <i onclick="myFunction()" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="#home">Home</a>
+                                <a href="#about">About</a>
+                                <a href="#contact">Contact</a>
+                            </div> -->
+                            <div class="dropdown">
+                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button"> -->
+                                <i class="fa fa-ellipsis-v fa-2x  pull-right btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton" aria-hidden="true"></i>
+                                <!-- </button> -->
+                                <div class="dropdown-menu" style="height: auto;" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" style="color: black;text-decoration: none;padding-left: 10px;" href="#">New Group</a><br>
+                                    <a class="dropdown-item" style="color: black;text-decoration: none;padding-left: 10px;" href="#">Notifications</a><br>
+                                    <a class="dropdown-item" style="color: black;text-decoration: none;padding-left: 10px;" href="{% url 'logout' %}">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                            <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row searchBox">
+                        <div class="col-sm-12 searchBox-inner">
+                            <div class="form-group has-feedback">
+                                <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row sideBar">
+                        {% if users %} {% for user in users %}
+                        <a href="{% url 'rooms1' curruser.id user.id %}" id="user{{ curruser.id }}">
+                            <div class="row sideBar-body">
+                                <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                    <div class="avatar-icon">
+                                        <img src="{{user.userprofile.url}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 col-xs-9 sideBar-main">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-8 sideBar-name">
+                                            <span class="name-meta">{{user.firstname}} {{user.lastname}}
+                </span>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                            <span class="time-meta pull-right">{{user.last_login}}
+                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %} {% endif %}
+                    </div>
+                </div>
+
+                <div class="side-two">
+                    <div class="row newMessage-heading">
+                        <div class="row newMessage-main">
+                            <div class="col-sm-2 col-xs-2 newMessage-back">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-10 col-xs-10 newMessage-title">
+                                New Chat
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row composeBox">
+                        <div class="col-sm-12 composeBox-inner">
+                            <div class="form-group has-feedback">
+                                <input id="composeText" type="text" class="form-control" name="searchText" placeholder="Search People">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row compose-sideBar">
+
+
+                        {% if users %} {% for user in users %}
+                        <div class="row sideBar-body">
+                            <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                <div class="avatar-icon">
+                                    <img src="{{user.userprofile.url}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-8 sideBar-name">
+                                        <span class="name-meta">{{user.firstname}} {{user.lastname}}
+                </span>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                        <span class="time-meta pull-right">{{user.last_login}}
+                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %} {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if receiver %}
+            <div class="col-sm-8 conversation">
+
+                <div class="row heading">
+                    <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+                        <div class="heading-avatar-icon">
+                            <img src="{{receiver.userprofile.url}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xs-7 heading-name">
+                        <a class="heading-name-meta">{{receiver.firstname}} {{receiver.lastname}}
+          </a> {% if receiver.is_active == True %}
+                        <span class="heading-online">Online</span> {% else %}
+                        <span class="heading-online">{{receiver.last_login}}</span> {% endif %}
+                    </div>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                    <div class="col-sm-1 col-xs-1  heading-dot pull-right" style="width: 2%;">
+                        <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- <input type="text" hidden name="message" value="" id=""> -->
+                            <i onclick="ChooseImage();" class="fa fa-paperclip fa-2x pull-right" aria-hidden="true">
+                                <input type="file" id="imageFile" name="file1" onchange="SendImage(this);" style="display:none;" />
+                                
+                            </i>
+                            <button type="submit"></button>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    function ChooseImage() {
+                        document.getElementById('imageFile').click();
+                    }
+                </script>
+                {% if messages %}
+                <div class="row message" id="conversation">
+
+                    <br> {% for message in messages %} {% if message.sender.username != curruser.username %}
+                    <div class="row message-body">
+                        <div class="col-sm-12 message-main-receiver">
+                            <div class="receiver">
+                                {% if message.file %}
+                                <div class="message-text">
+                                    hello
+                                    <a href="{{message.file.url}}"> file </a>
+                                </div>
+                                {% endif %}
+
+                                <div class="message-text">
+                                    {{message}}
+                                </div>
+                                <span class="message-time pull-right">
+                                    {{message.timestamp}}
+              </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+
+                    <div class="row message-body">
+                        <div class="col-sm-12 message-main-sender">
+                            <div class="sender">
+                                <div class="message-text">
+                                    {{message}}
+                                </div>
+                                <span class="message-time pull-right">
+                {{message.timestamp}}
+              </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %} {% endfor %}
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" style="float: right;">
+                        <i class="fa fa-send-o" style="font-size:20px;color:green;margin: 0;padding-top: 0%;margin-top: 0%;"></i></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <input style="float: left;" type="text" id="Text1" placeholder="Type your message..."> -->
+                    <textarea name="message" style="float: left;" id="Text1" cols="30" placeholder="Type your message..." rows="1"></textarea>
+                </form>
+                {% else %}
+                <div class="row message">
+                    <div class="row message-body"></div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" style="float: right;">
+                        <i class="fa fa-send-o" style="font-size:20px;color:green;margin: 0;padding-top: 0%;margin-top: 0%;"></i></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <input style="float: left;" type="text" id="Text1" placeholder="Type your message..."> -->
+                    <textarea name="message" style="float: left;" id="Text1" cols="30" placeholder="Type your message..." rows="1"></textarea>
+                </form>
+                {% endif %}
+                <!-- <textarea name="" style="resize: none;" id="Text1" cols="9" rows="1"></textarea> -->
+
+            </div>
+        </div>
+    </div>
+    {% load staticfiles %}
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script>
+        // For receiving
+        sender_id = "{{ receiver.id }}";
+        receiver_id = "{{ curruser.id }}";
+
+        //For sending
+        $(function() {
+            scrolltoend();
+            $('#chat-box').on('submit', function(event) {
+                console.log("Reached here");
+                event.preventDefault();
+                var message = $('#id_message');
+                send('{{ curruser.username }}', '{{ receiver.username }}', message.val());
+                message.val('');
+            })
+        })
+    </script>
+    <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: "#Text1",
+            plugins: "emoticons",
+            toolbar: "emoticons",
+            toolbar_location: "top",
+            menubar: false
+        });
+    </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $('#Text1').emojioneArea({
+            pickerPosition: 'top'
+        })
+    </script>
+    {% endif %}
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+
+
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}" />
+
+
+    <script type="text/javascript">
+        $(function() {
+            $(".heading-compose").click(function() {
+                $(".side-two").css({
+                    "left": "0"
+                });
+            });
+
+            $(".newMessage-back").click(function() {
+                $(".side-two").css({
+                    "left": "-100%"
+                });
+            });
+        })
+    </script>
+
+</body>
+
+</html>

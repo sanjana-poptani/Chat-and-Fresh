@@ -20,6 +20,15 @@ body {
     border-color: #4aba70;
 }
 
+.nameMeta {
+    font-size: 100%;
+    margin-left: -10%;
+    margin-top: 50%;
+    padding-left: -10%;
+    padding-top: 50%;
+    color: #000;
+}
+
 .login-form {
     width: 350px;
     margin: 0 auto;
@@ -105,4 +114,9 @@ body {
 
 .login-form a {
     color: #4aba70;
+}
+
+.open>.dropdown-menu {
+    display: inline-block;
+    height: auto;
 }
