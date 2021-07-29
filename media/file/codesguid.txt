@@ -1,0 +1,7 @@
+1. hackerrank and hackerearth
+2.Leetcode(interview)
+3.codechef nd codeforces
+thn for dynamic programming, youtube aditya verma
+4.interview ques from geeksforgeeks
+5. for google -> google kickstart
+6.GSoC

@@ -1,13 +1,15 @@
+from os import name
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('home/',views.home,name="home"),
-    path('home/<int:sender>/<int:receiver>/', views.message_view, name='rooms'),
-    path('home1/',views.home1,name="home1"),
     path('chatroom/<int:sender>/<int:receiver>/', views.msge_view, name='rooms1'),
+    path('grpchatroom/<int:sender>/<int:grpid>/', views.grp_msge_view, name='rooms2'),
     path('api/messages/<int:sender>/<int:receiver>/', views.message_list, name='message-detail'),
     path('api/messages/', views.message_list, name='message-list'),
+    path('api/messages1/<int:sender>/<int:grpid>/', views.grp_message_list, name='message-detail1'),
+    path('api/messages1/', views.grp_message_list, name='message-list1'),
     path('',views.login,name="login"),
     path('register/',views.register,name="register"),
     path('token/',views.token_send,name="token_send"),
@@ -16,5 +18,23 @@ urlpatterns = [
     path('error/',views.error_page,name="error"),
     path('change_pwd/<token>/',views.change_pwd,name="change_pwd"),
     path('forgot_pwd/',views.forgot_pwd,name="forgot_pwd"),
+    path('status/',views.add_edit_status,name="status"),
     path('logout/',views.logout,name="logout"),
+    path('submitFeedback/',views.submitFeedback,name="submitFeedback"),
+    path('feedback/',views.feedback,name="feedback"),
+    path('openVideo/',views.openVideo,name="openVideo"),
+    path('clearChat/<int:sender>/<int:receiver>',views.clearChat,name="clearChat"),
+    path('finalLogout/',views.finalLogout,name="finalLogout"),
+    path('loadfeedbacks/',views.loadFeedback,name="loadfeedbacks"),
+    path('viewBroadcast/',views.view_broadcast,name="viewBroadcast"),
+    path('broadcast/',views.broadcast,name="broadcast"),
+    path('notifications/',views.viewNotifications,name="notices"),
+    path('fetchUsers/',views.fetchUsers,name="fetchUsers"),
+    path('reqSent/<int:sender>/<int:receiver>',views.reqSent,name="reqSent"),
+    path('isAccept/<int:sender>/<int:receiver>',views.is_accept,name="isAccept"),
+    path('decline/<int:sender>/<int:receiver>',views.is_decline,name="decline"),
+    path('newgrp/',views.createGrp,name="newGrp"),
+    path('newgrp2/<int:grp_id>',views.createGrp2,name="newGrp2"),
+    path('grpDesc/<int:grp_id>',views.change_grp_desc,name="grpDesc"),
+    path('grpImg/<int:grp_id>',views.add_change_grp_icn,name="grpImg"),
 ]

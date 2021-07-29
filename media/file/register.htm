@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/stylesheets/style1.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" action="/register" method="POST">
+                <input type="text" name="username" placeholder="username" required />
+                <input type="email" name="email" placeholder="email" required />
+                <input type="password" name="password" placeholder="password" required />
+                <!-- <nobr> <input type="radio" name="type"> Doctor
+                </nobr>
+                <nobr><input type="radio" name="type"> Patient
+                </nobr> -->
+                <textarea name="address" id="" cols="30" placeholder="Address" rows="5" required></textarea>
+                <label for="">Profile:</label>
+                <input type="file" name="profile" accept="image/*" placeholder="profile" required>
+                <select name="type" required>
+                    <option>Register as</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Patient">Patient</option>
+                </select>
+                <label for="">License(for doctors):</label>
+                <input type="file" name="license" accept="application/pdf" placeholder="License(for doctors)">
+                <input type="text" placeholder="Speciality(for doctors)" name="speciality">
+                <button>register</button>
+                <p class="message">Already registered? <a href="/login">Sign In</a></p>
+
+            </form>
+        </div>
+    </div>
+</body>

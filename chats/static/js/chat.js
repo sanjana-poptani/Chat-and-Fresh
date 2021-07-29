@@ -9,12 +9,23 @@ function scrolltoend() {
     }, 800);
 }
 
+
 function ChooseImage() {
     document.getElementById('imageFile').click();
 }
 
 function send(sender, receiver, message) {
     $.post('/api/messages/', '{"sender": "' + sender + '", "receiver": "' + receiver + '","message": "' + message + '" }', function(data) {
+        console.log(data);
+        var box = text_box.replace('{sender}', "You");
+        box = box.replace('{message}', message);
+        $('#conversation').append(box);
+        scrolltoend();
+    })
+}
+
+function sendGrp(sender, group, message) {
+    $.post('/api/messages1/', '{"sender": "' + sender + '", "grpid": "' + group + '","message": "' + message + '" }', function(data) {
         console.log(data);
         var box = text_box.replace('{sender}', "You");
         box = box.replace('{message}', message);

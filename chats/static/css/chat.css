@@ -382,11 +382,13 @@ box-shadow: none;
     width: auto !important;
     padding: 4px 10px 7px !important;
     border-radius: 10px 10px 10px 0;
-    background: #ffffff;
+    background: whitesmoke;
     font-size: 12px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
     word-wrap: break-word;
     display: inline-block;
+    box-shadow: 5px 5px lightgray;
+    margin-bottom: 10px;
 }
 
 .sender {
@@ -399,6 +401,7 @@ box-shadow: none;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
     display: inline-block;
     word-wrap: break-word;
+    box-shadow: 5px 5px lightgray;
 }
 
 
@@ -850,4 +853,42 @@ box-shadow: none;
     .contacts_card {
         margin-bottom: 15px !important;
     }
+}
+
+#feedback-button-blue {
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    float: left;
+    width: 100%;
+    height: 5%;
+    border: #fbfbfb solid 4px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+}
+
+#feedback-button-blue:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(58, 56, 56);
+}
+
+.feedback-ease {
+    width: 0px;
+    height: 42px;
+    background-color: #fbfbfb;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -o-transition: .3s ease;
+    -ms-transition: .3s ease;
+    transition: .3s ease;
+}
+
+.feedback-submit:hover .feedback-ease {
+    width: 100%;
+    background-color: white;
 }

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+body {
+    font-family: 'Barlow', sans-serif;
+    background-size: cover;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.border-left {
+    border-left: 2px solid var(--primary) !important;
+}
+
+.sidebar {
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.overlay {
+    background-color: rgb(0 0 0 / 45%);
+    z-index: 99;
+}
+
+
+/* sidebar for small screens */
+
+@media screen and (max-width: 767px) {
+    .sidebar {
+        max-width: 18rem;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-out;
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+
+/* Manage user table*/
+
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myTable {
+    border-collapse: collapse;
+    width: 90%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-top: -20px;
+}
+
+#myTable th,
+#myTable td {
+    text-align: left;
+    padding: 12px;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.searchbox {
+    margin-top: 60px;
+    width: 500px;
+    height: 50px;
+    margin-left: 40px;
+    float: left;
+}
+
+.sortbox {
+    margin-left: 80px;
+    margin-bottom: -10px;
+    float: right;
+}
+
+.bton {
+    /* background-color: #04aa6d; */
+    background-color: #172830;
+    color: white;
+    padding: 12px;
+    margin: 0px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-left: 80px;
+    margin-right: 20px;
+    height: 40px;
+}
+
+.bton:hover {
+    background-color: #3791f1;
+}
