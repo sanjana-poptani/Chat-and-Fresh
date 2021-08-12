@@ -14,7 +14,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=100,unique=True)
     userprofile = models.ImageField(upload_to='image/',default='')
     firstname = models.CharField(max_length=100,default='')
-    lastname = models.CharField(max_length=100,default='xyz')
+    lastname = models.CharField(max_length=100,default='')
     is_active = models.BooleanField(auto_created=True,default=False)
     email = models.EmailField(max_length=150,unique=True,default='')
     password = models.CharField(max_length=100,default='')
